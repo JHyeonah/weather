@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.example.weather.data.TotalWeather" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -22,8 +29,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:text="Seoul"
+                android:text="@{data.title}"
                 android:gravity="center"
+                tools:text="Seoul"
                 android:layout_marginHorizontal="4dp"
                 style="@style/Body13"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -47,7 +55,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/tv_today_weather"
                 android:adjustViewBounds="true"
-                app:layout_constraintWidth_percent="0.3"/>
+                app:layout_constraintWidth_percent="0.35"
+                app:abbrToImage="@{data.weatherList[0].weatherStateAbbr}"/>
             <TextView
                 android:id="@+id/tv_today_weather"
                 android:layout_width="0dp"
@@ -59,6 +68,7 @@
                 app:layout_constraintVertical_chainStyle="packed"
                 android:layout_marginStart="12dp"
                 tools:text="Weather"
+                android:text="@{data.weatherList[0].weatherStateName}"
                 style="@style/Body14"/>
             <TextView
                 android:id="@+id/tv_today_temperature"
@@ -69,7 +79,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintVertical_bias="0"
                 android:layout_marginTop="10dp"
-                tools:text="10℃"
+                app:floatToTemp="@{data.weatherList[0].theTemp}"
                 style="@style/Temperature"/>
             <TextView
                 android:id="@+id/tv_today_percent"
@@ -81,6 +91,7 @@
                 app:layout_constraintHorizontal_bias="0"
                 android:layout_marginStart="12dp"
                 tools:text="10%"
+                app:intToHumidity="@{data.weatherList[0].humidity}"
                 style="@style/Humidity"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -103,7 +114,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/tv_tomorrow_weather"
                 android:adjustViewBounds="true"
-                app:layout_constraintWidth_percent="0.3"/>
+                app:layout_constraintWidth_percent="0.35"
+                app:abbrToImage="@{data.weatherList[1].weatherStateAbbr}"/>
             <TextView
                 android:id="@+id/tv_tomorrow_weather"
                 android:layout_width="0dp"
@@ -115,6 +127,7 @@
                 app:layout_constraintVertical_chainStyle="packed"
                 android:layout_marginStart="12dp"
                 tools:text="Weather"
+                android:text="@{data.weatherList[1].weatherStateName}"
                 style="@style/Body14"/>
             <TextView
                 android:id="@+id/tv_tomorrow_temperature"
@@ -125,6 +138,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginTop="10dp"
                 tools:text="10℃"
+                app:floatToTemp="@{data.weatherList[1].theTemp}"
                 style="@style/Temperature"/>
             <TextView
                 android:id="@+id/tv_tomorrow_percent"
@@ -136,6 +150,7 @@
                 app:layout_constraintHorizontal_bias="0"
                 android:layout_marginStart="12dp"
                 tools:text="10%"
+                app:intToHumidity="@{data.weatherList[1].humidity}"
                 style="@style/Humidity"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

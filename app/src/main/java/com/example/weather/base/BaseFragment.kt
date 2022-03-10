@@ -17,6 +17,9 @@ abstract class BaseFragment<T : ViewDataBinding, R : BaseViewModel> : Fragment()
 
     // 뷰 초기화
     abstract fun initView()
+    abstract fun onLoading()
+    abstract fun onError()
+    abstract fun onSuccess()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,9 +37,10 @@ abstract class BaseFragment<T : ViewDataBinding, R : BaseViewModel> : Fragment()
 
         viewModel.networkState.observe(viewLifecycleOwner) {
             when (it) {
-                is NetworkState.Loading -> {}
-                is NetworkState.Success -> {}
+                is NetworkState.Loading -> onLoading()
+                is NetworkState.Success -> onSuccess()
                 is NetworkState.Error -> {
+                    onError()
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                 }
             }

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="HeadBold14">
-        <item name="android:textSize">14sp</item>
+    <style name="Title">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/grey3</item>
+    </style>
+    <style name="HeadBold15">
+        <item name="android:textSize">15sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/grey3</item>
     </style>
@@ -15,7 +20,7 @@
     </style>
     <style name="Body13">
         <item name="android:textSize">13sp</item>
-        <item name="android:textColor">@color/grey6</item>
+        <item name="android:textColor">@color/grey3</item>
     </style>
     <style name="Temperature">
         <item name="android:textSize">14sp</item>

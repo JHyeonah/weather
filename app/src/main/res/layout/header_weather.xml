@@ -47,8 +47,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_margin="12dp"
                 android:gravity="center"
-                tools:text="Today"
-                style="@style/HeadBold14"/>
+                android:text="@string/header_today"
+                style="@style/HeadBold15"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_tomorrow"
@@ -71,7 +71,8 @@
                 android:layout_margin="12dp"
                 android:gravity="center"
                 tools:text="Tomorrow"
-                style="@style/HeadBold14"/>
+                android:text="@string/header_tomorrow"
+                style="@style/HeadBold15"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
