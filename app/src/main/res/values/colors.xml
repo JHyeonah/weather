@@ -11,6 +11,7 @@
     <color name="grey6">#666666</color>
     <color name="grey9">#999999</color>
     <color name="grey_df">#DFDFDF</color>
+    <color name="grey_ef">#EFEFEF</color>
     <color name="orange">#F83918</color>
     <color name="orange_deep">#CA3015</color>
 </resources>

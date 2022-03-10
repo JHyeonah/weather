@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="HeadBold14">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/grey3</item>
+    </style>
+    <style name="Head14">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/grey3</item>
+    </style>
+    <style name="Body14">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/grey3</item>
+    </style>
+    <style name="Body13">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/grey6</item>
+    </style>
+    <style name="Temperature">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/orange_deep</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Humidity">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/grey6</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>
