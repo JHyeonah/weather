@@ -77,4 +77,7 @@ dependencies {
     // navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
+
+    // swipe layout
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 }

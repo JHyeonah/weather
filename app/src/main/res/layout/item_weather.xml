@@ -69,7 +69,7 @@
                 android:layout_marginStart="12dp"
                 tools:text="Weather"
                 android:text="@{data.weatherList[0].weatherStateName}"
-                style="@style/Body14"/>
+                style="@style/Body15"/>
             <TextView
                 android:id="@+id/tv_today_temperature"
                 android:layout_width="wrap_content"
@@ -128,7 +128,7 @@
                 android:layout_marginStart="12dp"
                 tools:text="Weather"
                 android:text="@{data.weatherList[1].weatherStateName}"
-                style="@style/Body14"/>
+                style="@style/Body15"/>
             <TextView
                 android:id="@+id/tv_tomorrow_temperature"
                 android:layout_width="wrap_content"
