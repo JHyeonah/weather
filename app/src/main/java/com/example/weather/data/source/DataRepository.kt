@@ -20,6 +20,10 @@ class DataRepository @Inject constructor(
         source.getWeathers(id)
             .map { TotalWeather(title, id, it.consolidatedWeather) }
 
+    fun getLocationsRx() = source.getLocationsRx()
+
+    fun getTotalWeathersRx(id: Int, title: String) = source.getWeathersRx(id).map { TotalWeather(title, id, it.consolidatedWeather) }
+
     fun getImages(query: String): Flowable<ImageResponse> = service.getSearchImage(query, 10)
 
     fun getVideos(query: String): Flowable<ImageResponse> = service.getSearchVideo(query, 10)

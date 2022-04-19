@@ -46,6 +46,26 @@ class WeatherViewModel @Inject constructor(private val repository: DataRepositor
         }
     }
 
+    fun getWeathersRx() {
+        _networkState.value = NetworkState.Loading
+        val disposable = repository.getLocationsRx()
+            .flatMapIterable {
+                it
+            }
+            .flatMap {
+                repository.getTotalWeathersRx(it.woeid ?: 0, it.title ?: "")
+            }
+            .toList()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe( {
+                _weathers.postValue(it)
+                _networkState.value = NetworkState.Success
+            }, {
+                _networkState.value = NetworkState.Error(it.message.toString())
+            })
+    }
+
     fun getImages(query: String) {
         _networkState.value = NetworkState.Loading
         val imageFlowable = repository.getImages(query).flatMap { item ->
@@ -57,9 +77,14 @@ class WeatherViewModel @Inject constructor(private val repository: DataRepositor
             Flowable.fromIterable(item.documents)
         }
 
-        val disposable = Flowable.merge(imageFlowable, videoFlowable)
+        val disposable = Flowable.zip(imageFlowable, videoFlowable, { a, b ->
+            Log.d("DEBUG", "get zip image : $a")
+            Log.d("DEBUG", "get zip video : $b")
+            Document(b.title, null, null, null, null, a.image_url)
+        })
             .subscribeOn(Schedulers.io())
-            .toSortedList { i1, i2 -> i2.datetime!!.compareTo(i1.datetime!!) }
+            .toList()
+//            .toSortedList { i1, i2 -> i2.datetime!!.compareTo(i1.datetime!!) }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 Log.d("DEBUG", "get : $it")

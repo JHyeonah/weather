@@ -15,33 +15,33 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding, WeatherViewModel>()
     override val viewModel: WeatherViewModel by viewModels()
 
     override fun initView() {
-//        viewModel.getWeathers()
-        viewModel.getImages("고양이")
+        viewModel.getWeathersRx()
+//        viewModel.getImages("고양이")
 
         binding.layoutRefresh.setOnRefreshListener {
-//            viewModel.getWeathers()
-            viewModel.getImages("고양이")
+            viewModel.getWeathersRx()
+//            viewModel.getImages("고양이")
         }
         binding.layoutRefresh.setOnChildScrollUpCallback { _, _ ->
             binding.recyclerWeather.canScrollVertically(-1)
         }
-//        val adapter = WeatherAdapter()
-        val adapter = ImageAdapter()
+        val adapter = WeatherAdapter()
+//        val adapter = ImageAdapter()
         binding.recyclerWeather.adapter = adapter
 
         subscribeUI(adapter)
     }
 
-    private fun subscribeUI(adapter: ImageAdapter) {
-//        viewModel.weathers.observe(viewLifecycleOwner) {
-//            adapter.submitList(it)
-//            binding.recyclerWeather.post { binding.recyclerWeather.scrollToPosition(0) }
-//        }
-
-        viewModel.images.observe(viewLifecycleOwner) {
+    private fun subscribeUI(adapter: WeatherAdapter) {
+        viewModel.weathers.observe(viewLifecycleOwner) {
             adapter.submitList(it)
             binding.recyclerWeather.post { binding.recyclerWeather.scrollToPosition(0) }
         }
+
+//        viewModel.images.observe(viewLifecycleOwner) {
+//            adapter.submitList(it)
+//            binding.recyclerWeather.post { binding.recyclerWeather.scrollToPosition(0) }
+//        }
     }
 
     override fun onLoading() {
