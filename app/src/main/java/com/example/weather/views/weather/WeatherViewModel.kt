@@ -77,14 +77,9 @@ class WeatherViewModel @Inject constructor(private val repository: DataRepositor
             Flowable.fromIterable(item.documents)
         }
 
-        val disposable = Flowable.zip(imageFlowable, videoFlowable, { a, b ->
-            Log.d("DEBUG", "get zip image : $a")
-            Log.d("DEBUG", "get zip video : $b")
-            Document(b.title, null, null, null, null, a.image_url)
-        })
+        val disposable = Flowable.merge(imageFlowable, videoFlowable)
             .subscribeOn(Schedulers.io())
-            .toList()
-//            .toSortedList { i1, i2 -> i2.datetime!!.compareTo(i1.datetime!!) }
+            .toSortedList { i1, i2 -> i2.datetime!!.compareTo(i1.datetime!!) }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 Log.d("DEBUG", "get : $it")
