@@ -8,15 +8,18 @@ import com.example.weather.databinding.FragmentWeatherBinding
 import androidx.fragment.app.viewModels
 import com.example.weather.views.adapters.WeatherAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.time.ExperimentalTime
 
 @AndroidEntryPoint
 class WeatherFragment : BaseFragment<FragmentWeatherBinding, WeatherViewModel>() {
     override val layoutResourceId: Int = R.layout.fragment_weather
     override val viewModel: WeatherViewModel by viewModels()
 
+    @ExperimentalTime
     override fun initView() {
         viewModel.getLocations()
 
+//        viewModel.getLocationsRx()
         val adapter = WeatherAdapter()
         binding.recyclerWeather.adapter = adapter
 

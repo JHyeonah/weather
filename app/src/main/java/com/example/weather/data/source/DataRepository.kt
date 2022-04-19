@@ -13,4 +13,8 @@ class DataRepository @Inject constructor(private val source: RemoteDataSource) {
     fun getTotalWeathers(id: Int, title: String): Flow<TotalWeather> =
         source.getWeathers(id)
             .map { TotalWeather(title, id, it.consolidatedWeather) }
+
+    fun getLocationsRx() = source.getLocationsRx()
+    fun getTotalWeathersRx(id: Int, title: String) = source.getWeathersRx(id)
+        .map { TotalWeather(title, id, it.consolidatedWeather) }
 }

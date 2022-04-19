@@ -19,4 +19,8 @@ class RemoteDataSource @Inject constructor(private val service: RemoteService) {
         val response = service.getWeather(id)
         emit(response)
     }.flowOn(Dispatchers.IO)
+
+    fun getLocationsRx() = service.searchLocationsRx("se")
+
+    fun getWeathersRx(id: Int) = service.getWeatherRx(id)
 }
