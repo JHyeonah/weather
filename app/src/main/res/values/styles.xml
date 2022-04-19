@@ -14,8 +14,8 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/grey3</item>
     </style>
-    <style name="Body14">
-        <item name="android:textSize">14sp</item>
+    <style name="Body15">
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/grey3</item>
     </style>
     <style name="Body13">

@@ -1,5 +1,6 @@
 package com.example.weather.di
 
+import com.example.weather.api.ImageService
 import com.example.weather.api.RemoteService
 import dagger.Module
 import dagger.Provides
@@ -13,4 +14,8 @@ class NetworkModule {
     @Singleton
     @Provides
     fun providesRemoteService(): RemoteService = RemoteService.create()
+
+    @Singleton
+    @Provides
+    fun providesImageService(): ImageService = ImageService.create()
 }
